@@ -14,7 +14,7 @@ def main():
     if len(sys.argv) != 2:
         sys.exit("Usage: python tournament.py FILENAME")
         
-# --------------------------------------------------------------------------
+# -------------------------------------MAIN----------------------------------
 
     # Read teams into memory from file
     teams = []
@@ -29,7 +29,7 @@ def main():
             teamR = int(row['rating'])
             # Keep as a dictionary
             teams.append({'team': teamN, 'rating': teamR})
-# --------------------------------------------------------------------------
+# -------------------------------------MAIN----------------------------------
 
     # Simulate N tournaments and keep track of win counts
     counts = {}
@@ -41,7 +41,7 @@ def main():
             counts[winnerT] += 1
         else:
             counts[winnerT] = 1
-# --------------------------------------------------------------------------
+# -------------------------------------MAIN----------------------------------
 
     # Print each team's chances of winning, according to simulation
     for team in sorted(counts, key=lambda team: counts[team], reverse=True):
@@ -57,7 +57,7 @@ def simulate_game(team1, team2):
     probability = 1 / (1 + 10 ** ((rating2 - rating1) / 600))
     
     return random.random() < probability
-# --------------------------------------------------------------------------
+# ---------------------------------FUNCTIONS----------------------------------
 
 
 def simulate_round(teams):
@@ -72,7 +72,7 @@ def simulate_round(teams):
             winners.append(teams[i + 1])
 
     return winners
-# --------------------------------------------------------------------------
+# ---------------------------------FUNCTIONS----------------------------------
 
 
 def simulate_tournament(teams):
@@ -81,9 +81,9 @@ def simulate_tournament(teams):
         teams = simulate_round(teams)
     
     return teams[0]['team']
-# --------------------------------------------------------------------------
+# ----------------------------------------------------------------------------
 
 
-# END-LINE
+# END-LINE----------------
 if __name__ == "__main__":
     main()
